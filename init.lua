@@ -1,44 +1,23 @@
+local modname = minetest.get_current_modname()
+local modpath = minetest.get_modpath(modname)
 
--- Load support for intllib.
-local path = minetest.get_modpath(minetest.get_current_modname()) .. "/"
+local mobs_animal = {
+	S = minetest.get_translator("mobs_animal")
+}
 
-local S = minetest.get_translator and minetest.get_translator("mobs_animal") or
-		dofile(path .. "intllib.lua")
-
-mobs.intllib = S
-
-
--- Check for custom mob spawn file
-local input = io.open(path .. "spawn.lua", "r")
-
-if input then
-	mobs.custom_spawn_animal = true
-	input:close()
-	input = nil
-end
-
+dofile(modpath .. "/settings.lua")
 
 -- Animals
-dofile(path .. "chicken.lua") -- JKmurray
-dofile(path .. "cow.lua") -- KrupnoPavel
-dofile(path .. "rat.lua") -- PilzAdam
-dofile(path .. "sheep.lua") -- PilzAdam
-dofile(path .. "warthog.lua") -- KrupnoPavel
-dofile(path .. "bee.lua") -- KrupnoPavel
-dofile(path .. "bunny.lua") -- ExeterDad
-dofile(path .. "kitten.lua") -- Jordach/BFD
-dofile(path .. "penguin.lua") -- D00Med
-dofile(path .. "panda.lua") -- AspireMint
-
-
--- Load custom spawning
-if mobs.custom_spawn_animal then
-	dofile(path .. "spawn.lua")
-end
-
+--dofile(modpath .. "/mobs/bee.lua") -- KrupnoPavel
+--dofile(modpath .. "/mobs/bunny.lua") -- ExeterDad
+--dofile(modpath .. "/mobs/chicken.lua") -- JKmurray
+--dofile(modpath .. "/mobs/cow.lua") -- KrupnoPavel
+--dofile(modpath .. "/mobs/kitten.lua") -- Jordach/BFD
+--dofile(modpath .. "/mobs/panda.lua") -- AspireMint
+--dofile(modpath .. "/mobs/penguin.lua") -- D00Med
+--dofile(modpath .. "/mobs/rat.lua") -- PilzAdam
+--dofile(modpath .. "/mobs/sheep.lua") -- PilzAdam
+--dofile(modpath .. "/mobs/warthog.lua") -- KrupnoPavel
 
 -- Lucky Blocks
-dofile(path .. "lucky_block.lua")
-
-
-print (S("[MOD] Mobs Redo Animals loaded"))
+dofile(modpath .. "lucky_block.lua")
